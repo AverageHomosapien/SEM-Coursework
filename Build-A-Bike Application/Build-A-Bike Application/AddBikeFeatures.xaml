@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Build_A_Bike_Application"
         mc:Ignorable="d"
-        Title="AddBikeFeatures" Height="359.328" Width="617.91">
+        Title="AddBikeFeatures" Height="394.189" Width="617.91">
     <Grid>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="310" VerticalAlignment="Top" Width="591" Margin="9,9,0,0"/>
 
@@ -32,8 +32,8 @@
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="NUMBER LEFT IN STOCK" VerticalAlignment="Top" Margin="459,157,0,0"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="NUMBER LEFT IN STOCK" VerticalAlignment="Top" Margin="459,303,0,0"/>
         <Button x:Name="Submit" Content="Proceed with Order" HorizontalAlignment="Left" VerticalAlignment="Top" Width="122" Margin="373,15,0,0" Height="24"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Individual Cost:" VerticalAlignment="Top" Margin="181,15,0,0"/>
-        <TextBlock x:Name="CostBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="269,15,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Individual Cost:" VerticalAlignment="Top" Margin="181,336,0,0"/>
+        <TextBlock x:Name="CostBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="262,336,0,0"/>
         <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="177,75,0,0"/>
         <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="177,107,0,0"/>
         <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="472,75,0,0"/>
@@ -41,6 +41,9 @@
         <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="472,211,0,0"/>
         <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="472,239,0,0"/>
         <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="177,232,0,0"/>
+        <Button x:Name="PriceRequest" Content="Get Bike Price" HorizontalAlignment="Left" VerticalAlignment="Top" Width="81" Margin="10,336,0,0" Height="19"/>
+        <CheckBox x:Name="WarrantyBox" Content="Warranty Requested?" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="468,336,0,0"/>
+
 
     </Grid>
 </Window>
