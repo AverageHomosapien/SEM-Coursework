@@ -1,0 +1,18 @@
+﻿<Window x:Class="Build_A_Bike_Application.AddBikeFeatures"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Build_A_Bike_Application"
+        mc:Ignorable="d"
+        Title="AddBikeFeatures" Height="359.328" Width="617.91">
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="310" VerticalAlignment="Top" Width="591" Margin="10,10,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Bike Number:" VerticalAlignment="Top" Margin="13,12,0,0"/>
+        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="59" Margin="101,12,0,0"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="139" VerticalAlignment="Top" Width="591" Margin="9,39,0,0"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="142" VerticalAlignment="Top" Width="591" Margin="9,178,0,0"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="281" VerticalAlignment="Top" Width="298" Margin="302,39,0,0"/>
+
+    </Grid>
+</Window>
