@@ -7,12 +7,27 @@
         mc:Ignorable="d"
         Title="AddBikeFeatures" Height="359.328" Width="617.91">
     <Grid>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="310" VerticalAlignment="Top" Width="591" Margin="9,9,0,0"/>
+
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="310" VerticalAlignment="Top" Width="591" Margin="10,10,0,0"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Bike Number:" VerticalAlignment="Top" Margin="13,12,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Bike Number:" VerticalAlignment="Top" Margin="13,12,0,0" FontWeight="Bold"/>
         <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="59" Margin="101,12,0,0"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="139" VerticalAlignment="Top" Width="591" Margin="9,39,0,0"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="142" VerticalAlignment="Top" Width="591" Margin="9,178,0,0"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="281" VerticalAlignment="Top" Width="298" Margin="302,39,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Frame Size:" VerticalAlignment="Top" Margin="15,75,0,0"/>
+        <Label Content="Frame" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="13,39,0,0" Width="123" FontWeight="Bold"/>
+        <Label Content="Group Set" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="302,39,0,0" Width="123" FontWeight="Bold"/>
+        <Label Content="Wheels" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,178,0,0" Width="123" FontWeight="Bold"/>
+        <Label Content="Finishing Set" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="302,178,0,0" Width="123" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Frame Colour:" VerticalAlignment="Top" Margin="15,107,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Gears:" VerticalAlignment="Top" Margin="309,75,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Breaks:" VerticalAlignment="Top" Margin="309,107,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="13,232,0,0"><Run Text="Wheels"/><Run Text=":"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Handlebars:&#x9;" VerticalAlignment="Top" Margin="309,211,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Saddle:" VerticalAlignment="Top" Margin="309,245,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="NUMBER LEFT IN STOCK" VerticalAlignment="Top" Margin="172,157,0,0"/>
+        <Button x:Name="CancelOrder" Content="Cancel Order" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="514,15,0,0"/>
 
     </Grid>
 </Window>
