@@ -24,5 +24,37 @@ namespace Build_A_Bike_Application
         {
             InitializeComponent();
         }
+
+        private void NewBikeOrder_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (BikeNumber.Text == "")
+                {
+                    throw new Exception
+                        ("Please ensure that you add a number of bikes to enter.");
+                }
+
+                // Temporary number - later stored as global bike num
+
+                bool result = Int32.TryParse(BikeNumber.Text, out var tempNum);
+
+                if (!result)
+                {
+                    throw new Exception
+                        ("Please ensure that you enter a valid number of bikes to be added.");
+                }
+
+                var bikeOrder = new AddBikeFeatures(tempNum);
+                bikeOrder.Show();
+                Close();
+
+            }
+            catch (Exception newBikeException)
+            {
+                MessageBox.Show(newBikeException.Message, "error");
+            }
+
+        }
     }
 }
