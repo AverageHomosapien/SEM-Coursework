@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2024
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Build-A-Bike Application", "Build-A-Bike Application\Build-A-Bike Application.csproj", "{18E2C178-3556-49B0-89C7-33FA7552BC2E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayer", "Build-A-Bike Application\PresentationLayer.csproj", "{18E2C178-3556-49B0-89C7-33FA7552BC2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{731F49B0-7075-4C06-80B6-D8AC2D63857D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{18E2C178-3556-49B0-89C7-33FA7552BC2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18E2C178-3556-49B0-89C7-33FA7552BC2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18E2C178-3556-49B0-89C7-33FA7552BC2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{731F49B0-7075-4C06-80B6-D8AC2D63857D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{731F49B0-7075-4C06-80B6-D8AC2D63857D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{731F49B0-7075-4C06-80B6-D8AC2D63857D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{731F49B0-7075-4C06-80B6-D8AC2D63857D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
