@@ -19,9 +19,11 @@ namespace Build_A_Bike_Application
     /// </summary>
     public partial class AddBikeFeatures : Window
     {
-        public AddBikeFeatures()
+
+        public AddBikeFeatures(int bikeNumber)
         {
             InitializeComponent();
+            MessageBox.Show("BikeNumber =" + bikeNumber);
         }
     }
 }
