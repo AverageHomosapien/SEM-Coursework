@@ -19,11 +19,44 @@ namespace Build_A_Bike_Application
     /// </summary>
     public partial class AddBikeFeatures : Window
     {
+        private IList<int> _bikeNumberRange = new List<int>();
+        public int StartingIndex = -1;
+        private int BikeNum { get; set; }
+
+        // Setting Bike Number Range
+        public IList<int> BikeNumberRange
+        {
+            get => _bikeNumberRange;
+            set { _bikeNumberRange = value; }
+        }
 
         public AddBikeFeatures(int bikeNumber)
         {
             InitializeComponent();
             MessageBox.Show("BikeNumber =" + bikeNumber);
+            BikeNum = bikeNumber;
+
+            UpdateBikeNumbers();
+
+            //DataContext = new DataObject();
+            
         }
+
+        /// <summary>
+        /// Adds the total number of selected bikes to the combo box and displays
+        /// </summary>
+        public void UpdateBikeNumbers()
+        {
+            // Adding bike number to the combobox
+            for (int i = 0; i < BikeNum; i++)
+            {
+                BikeNumberRange.Add(i + 1);
+            }
+
+            DataContext = this;
+            this.BikeNumCombo.ItemsSource = BikeNumberRange;
+        }
+
+        
     }
 }

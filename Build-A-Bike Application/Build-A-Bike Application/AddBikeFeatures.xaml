@@ -11,7 +11,9 @@
 
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="310" VerticalAlignment="Top" Width="591" Margin="10,10,0,0"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Bike Number:" VerticalAlignment="Top" Margin="13,12,0,0" FontWeight="Bold"/>
-        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="101,12,0,0" Height="27"/>
+        <ComboBox 
+            x:Name="BikeNumCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="101,12,0,0" Height="27" 
+            ItemsSource="{Binding Source={StaticResource BikeNumberRange}}" SelectedItem="StartingIndex"></ComboBox>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="139" VerticalAlignment="Top" Width="591" Margin="9,39,0,0"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="142" VerticalAlignment="Top" Width="591" Margin="9,178,0,0"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="281" VerticalAlignment="Top" Width="298" Margin="302,39,0,0"/>
