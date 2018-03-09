@@ -35,14 +35,21 @@ namespace Build_A_Bike_Application
                         ("Please ensure that you add a number of bikes to enter.");
                 }
 
-                // Temporary number - later stored as global bike num
-
+                
+                // Check if the value is a number
                 bool result = Int32.TryParse(BikeNumber.Text, out var tempNum);
 
                 if (!result)
                 {
                     throw new Exception
                         ("Please ensure that you enter a valid number of bikes to be added.");
+                }
+
+                // No more than 6 bikes can be ordered at once
+                if (tempNum > 6 || tempNum < 1)
+                {
+                    throw new Exception
+                        ("Please ensure that you enter a number lower than 6.");
                 }
 
                 var bikeOrder = new AddBikeFeatures(tempNum);
