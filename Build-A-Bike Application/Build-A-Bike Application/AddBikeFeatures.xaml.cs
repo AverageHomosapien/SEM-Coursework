@@ -38,6 +38,8 @@ namespace Build_A_Bike_Application
 
             UpdateBikeNumbers();
 
+            //COMBOBOX.items.add("NUMBERHERE");
+
             //DataContext = new DataObject();
             
         }
