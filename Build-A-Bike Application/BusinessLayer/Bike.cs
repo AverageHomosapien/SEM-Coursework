@@ -11,26 +11,12 @@ namespace BusinessLayer
         public Bike(int orderId)
         {
             OrderId = orderId;
+            ExtendedWarranty = false;
         }
 
         public int BikeId { get; private set; }
         public int OrderId { get; private set; }
-
-        private string _bikeSize;
-        public string BikeSize
-        {
-            get => _bikeSize;
-            set
-            {
-                if (value != "small" || value != "medium" || value != "large")
-                {
-                    throw new Exception
-                        ("Please ensure that you are entering a valid bike size.");
-                }
-                _bikeSize = value;
-            }
-        }
-
+        public string BikeSize { get; set; }
         public string Frame { get; set; }
         public string GroupSet { get; set; }
         public string FinishingSet { get; set; }
@@ -49,7 +35,7 @@ namespace BusinessLayer
 
         public void AddWarranty()
         {
-
+            ExtendedWarranty = true;
         }
 
         public void CancelOrder()
