@@ -5,15 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Build_A_Bike_Application"
         mc:Ignorable="d"
-        Title="AddBikeFeatures" Height="394.189" Width="617.91">
+        Title="AddBikeFeatures" Height="394.189" Width="617.91"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="310" VerticalAlignment="Top" Width="591" Margin="9,9,0,0"/>
 
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="310" VerticalAlignment="Top" Width="591" Margin="10,10,0,0"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Bike Number:" VerticalAlignment="Top" Margin="13,12,0,0" FontWeight="Bold"/>
-        <ComboBox 
-            x:Name="BikeNumCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="101,12,0,0" Height="27" 
-            ItemsSource="{Binding Source={StaticResource BikeNumberRange}}" SelectedItem="StartingIndex"></ComboBox>
+        <ComboBox SelectedIndex="0" x:Name="BikeNumCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="101,12,0,0" Height="27" SelectedItem="StartingIndex" SelectionChanged="BikeNumCombo_SelectionChanged"></ComboBox>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="139" VerticalAlignment="Top" Width="591" Margin="9,39,0,0"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="142" VerticalAlignment="Top" Width="591" Margin="9,178,0,0"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="281" VerticalAlignment="Top" Width="298" Margin="302,39,0,0"/>
@@ -24,27 +23,56 @@
         <Label Content="Finishing Set" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="302,178,0,0" Width="123" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Frame Colour:" VerticalAlignment="Top" Margin="15,107,0,0"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Gears:" VerticalAlignment="Top" Margin="309,75,0,0"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Breaks:" VerticalAlignment="Top" Margin="309,107,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Brakes:" VerticalAlignment="Top" Margin="309,107,0,0"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="13,232,0,0"><Run Text="Wheels"/><Run Text=":"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Handlebars:&#x9;" VerticalAlignment="Top" Margin="309,211,0,0"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Saddle:" VerticalAlignment="Top" Margin="309,245,0,0"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="NUMBER LEFT IN STOCK" VerticalAlignment="Top" Margin="167,162,0,0"/>
-        <Button x:Name="CancelOrder" Content="Cancel Order" HorizontalAlignment="Left" VerticalAlignment="Top" Width="86" Margin="506,15,0,0" Height="24"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="NUMBER LEFT IN STOCK" VerticalAlignment="Top" Margin="167,303,0,0"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="NUMBER LEFT IN STOCK" VerticalAlignment="Top" Margin="459,157,0,0"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="NUMBER LEFT IN STOCK" VerticalAlignment="Top" Margin="459,303,0,0"/>
+        <TextBlock x:Name="FrameStock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="NUMBER LEFT IN STOCK" VerticalAlignment="Top" Margin="167,162,0,0"/>
+        <Button x:Name="CancelOrder" Content="Cancel Order" HorizontalAlignment="Left" VerticalAlignment="Top" Width="86" Margin="506,15,0,0" Height="24" Click="CancelOrder_Click"/>
+        <TextBlock x:Name="WheelStock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="NUMBER LEFT IN STOCK" VerticalAlignment="Top" Margin="167,303,0,0"/>
+        <TextBlock x:Name="GroupStock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="NUMBER LEFT IN STOCK" VerticalAlignment="Top" Margin="459,157,0,0"/>
+        <TextBlock x:Name="FinishingStock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="NUMBER LEFT IN STOCK" VerticalAlignment="Top" Margin="459,303,0,0"/>
         <Button x:Name="Submit" Content="Proceed with Order" HorizontalAlignment="Left" VerticalAlignment="Top" Width="122" Margin="373,15,0,0" Height="24"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Individual Cost:" VerticalAlignment="Top" Margin="181,336,0,0"/>
-        <TextBlock x:Name="CostBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="262,336,0,0"/>
-        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="177,75,0,0"/>
-        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="177,107,0,0"/>
-        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="472,75,0,0"/>
-        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="472,107,0,0"/>
-        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="472,211,0,0"/>
-        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="472,239,0,0"/>
-        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="177,232,0,0"/>
-        <Button x:Name="PriceRequest" Content="Get Bike Price" HorizontalAlignment="Left" VerticalAlignment="Top" Width="81" Margin="10,336,0,0" Height="19"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Individual Cost:" VerticalAlignment="Top" Margin="15,338,0,0"/>
+        <TextBlock x:Name="CostBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="101,338,0,0"/>
+        <ComboBox x:Name="FrameSizeCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="177,75,0,0">
+            <ComboBoxItem Content="Small"/>
+            <ComboBoxItem Content="Medium"/>
+            <ComboBoxItem Content="Large"/>
+        </ComboBox>
+        <ComboBox x:Name="FrameColourCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="177,107,0,0">
+            <ComboBoxItem Content="Fire Red"/>
+            <ComboBoxItem Content="Leaf Green"/>
+            <ComboBoxItem Content="Ocean Blue"/>
+        </ComboBox>
+        <ComboBox x:Name="GearCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="472,75,0,0">
+            <ComboBoxItem Content="Low Cost"/>
+            <ComboBoxItem Content="Medium Cost"/>
+            <ComboBoxItem Content="High Cost"/>
+        </ComboBox>
+        <ComboBox x:Name="BrakeCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="472,107,0,0">
+            <ComboBoxItem Content="Disk"/>
+            <ComboBoxItem Content="Pad"/>
+        </ComboBox>
+        <ComboBox x:Name="HandlebarCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="472,211,0,0">
+            <ComboBoxItem Content="Standard"/>
+            <ComboBoxItem Content="Race"/>
+            <ComboBoxItem Content="Offroad"/>
+        </ComboBox>
+        <ComboBox x:Name="SaddleCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="472,239,0,0">
+            <ComboBoxItem Content="Standard"/>
+            <ComboBoxItem Content="Race"/>
+            <ComboBoxItem Content="Offroad"/>
+        </ComboBox>
+        <ComboBox x:Name="WheelsCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="177,232,0,0">
+            <ComboBoxItem Content="Standard"/>
+            <ComboBoxItem Content="Race"/>
+            <ComboBoxItem Content="Offroad"/>
+        </ComboBox>
+        <Button x:Name="AddBike" Content="Add Bike to Order" HorizontalAlignment="Left" VerticalAlignment="Top" Width="175" Margin="177,15,0,0" Height="24" Click="AddBike_Click"/>
         <CheckBox x:Name="WarrantyBox" Content="Warranty Requested?" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="468,336,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Order Id:" VerticalAlignment="Top" Margin="167,338,0,0"/>
+        <TextBlock x:Name="OrderIdBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="219,338,0,0"/>
 
 
     </Grid>

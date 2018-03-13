@@ -27,35 +27,22 @@ namespace Build_A_Bike_Application
 
         private void NewBikeOrder_Click(object sender, RoutedEventArgs e)
         {
+
             try
             {
-                if (BikeNumber.Text == "")
+                // Checking that a value has been selected
+                if (BikeNumCombo.SelectedIndex == -1)
                 {
                     throw new Exception
-                        ("Please ensure that you add a number of bikes to enter.");
+                        ("Please ensure that you select the number of bikes to be ordered");
                 }
 
-                
-                // Check if the value is a number
-                bool result = Int32.TryParse(BikeNumber.Text, out var tempNum);
+                int tempNum = Int32.Parse(BikeNumCombo.Text);
 
-                if (!result)
-                {
-                    throw new Exception
-                        ("Please ensure that you enter a valid number of bikes to be added.");
-                }
-
-                // No more than 6 bikes can be ordered at once
-                if (tempNum > 6 || tempNum < 1)
-                {
-                    throw new Exception
-                        ("Please ensure that you enter a number lower than 6.");
-                }
-
+                // New bike order with the number of bikes selected from the main menu
                 var bikeOrder = new AddBikeFeatures(tempNum);
                 bikeOrder.Show();
                 Close();
-
             }
             catch (Exception newBikeException)
             {
