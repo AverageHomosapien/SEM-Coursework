@@ -1,0 +1,7 @@
+﻿AddBikeFeatures, why are we adding a new bike?
+	Does it matter?
+
+When switch to a currently active bike, populates all fields with existing information
+
+Active price updates when changes made
+Active stock updates when changes made

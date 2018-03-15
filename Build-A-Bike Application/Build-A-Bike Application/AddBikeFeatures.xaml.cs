@@ -20,6 +20,8 @@ namespace Build_A_Bike_Application
     /// </summary>
     public partial class AddBikeFeatures : Window
     {
+        public int OrderId = 905;
+
         private int _previousBikeSelect = 1;
 
         // Declaring a new list of bikes to order
@@ -30,6 +32,10 @@ namespace Build_A_Bike_Application
 
         public int StartingIndex = -1;
         
+        /// <summary>
+        /// Adds 
+        /// </summary>
+        /// <param name="bikeNumber"></param>
         public AddBikeFeatures(int bikeNumber)
         {
             InitializeComponent();
@@ -40,6 +46,11 @@ namespace Build_A_Bike_Application
                 BikeNumCombo.Items.Add(i + 1);
                 _numberOfBikes++;
             }
+
+            // Add a new bike with the number
+            bikeList.Add(new Bike(OrderId,1));
+
+            // WHY ARE WE ADDING A NEW BIKE HERE?
         }
 
         /// <summary>
@@ -117,11 +128,101 @@ namespace Build_A_Bike_Application
 
         }
 
+        /// <summary>
+        /// Button to add or update a bike based on details in the forms
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddBike_Click(object sender, RoutedEventArgs e)
         {
-            int bikeToModify = BikeNumCombo.SelectedIndex + 1;
+            // +1 Because the indexes are being used (0-5) while 
+            int bikeToModify = BikeNumCombo.SelectedIndex +1;
 
-            if (bikeList[])
+            MessageBox.Show("Bike to modify is " + bikeToModify);
+            int count = 0;
+            bool bikeFound = false;
+            foreach (var bike in bikeList)
+            {
+                MessageBox.Show("This is the bikelist count" + bikeList[count].BikeId);
+                MessageBox.Show("bike to modify is " + bikeToModify);
+                Bike testingBike = new Bike(OrderId, bikeToModify);
+                // Updating existing bike
+                if (bikeList[count].BikeId == bikeToModify) // ALWAYS RETURNS 0
+                {
+                    MessageBox.Show("Updating existing bike");
+                    ModifyBike(bikeToModify, count, bike);
+                    bikeFound = true;
+                    MessageBox.Show(bike.Brakes + " are the brakes");
+                    MessageBox.Show(bike.Saddle + " is the saddle");
+                }
+
+                count++;
+            }
+
+            // Adding new bike
+            if (!bikeFound)
+            {
+                MessageBox.Show("Adding new bike");
+                bikeList.Add(new Bike(OrderId, bikeToModify));
+                Bike bike = bikeList[bikeList.Count - 1];
+                MessageBox.Show("Count is " + count);
+                ModifyBike(bikeToModify, count, bike);
+                MessageBox.Show(bike.Brakes + " are the brakes");
+                MessageBox.Show(bike.Saddle + " is the saddle");
+            }
+
+        }
+
+        /// <summary>
+        /// Modifies a bike with an already existing Id
+        /// </summary>
+        private void ModifyBike(int bikeNum, int indexAt, Bike bikeToUpdate)
+        {
+            
+            // Update frame size combo
+            if (FrameSizeCombo.SelectedIndex != -1)
+            {
+                bikeToUpdate.Frame = FrameSizeCombo.Text;
+            }
+
+            // Update colour from combo
+            if (FrameColourCombo.SelectedIndex != -1)
+            {
+                bikeToUpdate.Colour = FrameColourCombo.Text;
+            }
+
+            // Update wheels from combo
+            if (WheelsCombo.SelectedIndex != -1)
+            {
+                bikeToUpdate.Wheels = WheelsCombo.Text;
+            }
+
+            // Update gears from combo
+            if (GearCombo.SelectedIndex != -1)
+            {
+                bikeToUpdate.Gears = GearCombo.Text;
+            }
+
+            // Update brakes from combo
+            if (BrakeCombo.SelectedIndex != -1)
+            {
+                bikeToUpdate.Brakes = BrakeCombo.Text;
+            }
+
+            // Update handlebars from combo
+            if (HandlebarCombo.SelectedIndex != -1)
+            {
+                bikeToUpdate.Handlebars = HandlebarCombo.Text;
+            }
+
+            // Update saddle from combo
+            if (SaddleCombo.SelectedIndex != -1)
+            {
+                bikeToUpdate.Saddle = SaddleCombo.Text;
+            }
+
+
+            ClearFields();
         }
 
         // DONT CHECK THE ENTRIES - STORE THE DATA IN THE BIKE CLASS AND THEN CHECK THE BIKES

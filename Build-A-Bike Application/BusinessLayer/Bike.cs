@@ -8,9 +8,10 @@ namespace BusinessLayer
 {
     public class Bike
     {
-        public Bike(int orderId)
+        public Bike(int orderId, int bikeId)
         {
             OrderId = orderId;
+            BikeId = bikeId;   
             ExtendedWarranty = false;
         }
 
@@ -18,8 +19,12 @@ namespace BusinessLayer
         public int OrderId { get; private set; }
         public string BikeSize { get; set; }
         public string Frame { get; set; }
-        public string GroupSet { get; set; }
-        public string FinishingSet { get; set; }
+        public string Colour { get; set; }
+        public string Wheels { get; set; }
+        public string Gears { get; set; }
+        public string Brakes { get; set; }
+        public string Handlebars { get; set; }
+        public string Saddle { get; set; }
         public bool ExtendedWarranty { get; set; }
         public int Cost { get; set; }
 

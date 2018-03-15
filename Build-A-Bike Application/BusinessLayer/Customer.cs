@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
+    /// <summary>
+    /// Customer class to be used in full project - partial project doesn't require customer
+    /// </summary>
     public class Customer
     {
         /// <summary>
