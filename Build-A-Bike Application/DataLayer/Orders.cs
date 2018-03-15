@@ -16,7 +16,7 @@ namespace DataLayer
 
         public static double OrderCost = 0;
 
-        public static List<int> bikes = new List<int>();
-        public static List<double> bikeCosts = new List<double>();
+        public static List<int> Bikes = new List<int>();
+        public static List<double> BikeCosts = new List<double>();
     }
 }

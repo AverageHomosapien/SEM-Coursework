@@ -9,17 +9,22 @@ namespace DataLayer
     public class BikeStock
     {
         // Available stock left for different parts of the bike
-        public static int AvailableFrame { get; private set; }
-        public static int AvailableWheels { get; private set; }
-        public static int AvailableGroupSet { get; private set; }
-        public static int AvailableFinishingSet { get; private set; }
+        public int AvailableFrame { get; private set; }
+        public int AvailableWheels { get; private set; }
+        public int AvailableGroupSet { get; private set; }
+        public int AvailableFinishingSet { get; private set; }
 
+
+        public double FrameCost { get; set; }
+        public double WheelCost { get; set; }
+        public double GroupSetCost { get; set; }
+        public double FinishingSetCost { get; set; }
 
         /// <summary>
         /// Returns cost and stock level of wheels
         /// /// </summary>
         /// <param name="selection">Wheel type</param>
-        public static double Wheels(string selection)
+        public double Wheels(string selection)
         {
             switch (selection)
             {
@@ -43,7 +48,7 @@ namespace DataLayer
         /// </summary>
         /// <param name="firstSelection">Frame size</param>
         /// <param name="secondSelection">Frame colour</param>
-        public static double Frame(string firstSelection, string secondSelection)
+        public double Frame(string firstSelection, string secondSelection)
         {
             switch (firstSelection)
             {
@@ -106,7 +111,7 @@ namespace DataLayer
         /// </summary>
         /// <param name="firstSelection">Cost bracket</param>
         /// <param name="secondSelection">Brakes</param>
-        public static double GroupSet(string firstSelection, string secondSelection)
+        public double GroupSet(string firstSelection, string secondSelection)
         {
             switch (firstSelection)
             {
@@ -154,7 +159,7 @@ namespace DataLayer
         /// </summary>
         /// <param name="firstSelection"></param>
         /// <param name="secondSelection"></param>
-        public static double FinishingSet(string firstSelection, string secondSelection)
+        public double FinishingSet(string firstSelection, string secondSelection)
         {
             switch (firstSelection)
             {

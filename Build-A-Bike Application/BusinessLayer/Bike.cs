@@ -30,10 +30,6 @@ namespace BusinessLayer
         public bool ExtendedWarranty { get; set; }
         public double Cost { get; set; }
 
-        public double FrameCost { get; set; }
-        public double WheelCost { get; set; }
-        public double GroupSetCost { get; set; }
-        public double FinishingSetCost { get; set; }
 
         public int CalculateCost()
         {
@@ -53,66 +49,66 @@ namespace BusinessLayer
         }
 
         // Updates the frame
-        public void UpdateFrame(string firstCombo, string secondCombo)
+        public void UpdateFrame(string firstCombo, string secondCombo, BikeStock stock)
         {
             double temp = 0;
 
-            if (FrameCost != 0)
+            if (stock.FrameCost != 0)
             {
-                Cost = Cost - FrameCost;
+                Cost = Cost - stock.FrameCost;
             }
 
-            temp = BikeStock.Frame(firstCombo, secondCombo);
+            temp = stock.Frame(firstCombo, secondCombo);
             Cost = Cost + temp;
-            FrameCost= temp;
+            stock.FrameCost = temp;
         }
 
         // Updates the wheels
-        public void UpdateWheels(string comboBox)
+        public void UpdateWheels(string comboBox, BikeStock stock)
         {
             double temp = 0;
             
-            if (WheelCost!= 0)
+            if (stock.WheelCost!= 0)
             {
-                Cost = Cost - WheelCost;
+                Cost = Cost - stock.WheelCost;
                 MessageBox.Show("Deducting cost");
             }
 
-            temp = BikeStock.Wheels(comboBox);
+            temp = stock.Wheels(comboBox);
             Cost = Cost + temp;
-            WheelCost = temp;
+            stock.WheelCost = temp;
         }
 
         // Updates the group set
-        public void UpdateGroupSet(string firstCombo, string secondCombo)
+        public void UpdateGroupSet(string firstCombo, string secondCombo, BikeStock stock)
         {
             double temp = 0;
             
-            if (GroupSetCost != 0)
+            if (stock.GroupSetCost != 0)
             {
-                Cost = Cost - GroupSetCost;
+                Cost = Cost - stock.GroupSetCost;
                 MessageBox.Show("Deducting cost");
             }
 
-            temp = BikeStock.GroupSet(firstCombo, secondCombo);
+            temp = stock.GroupSet(firstCombo, secondCombo);
             Cost = Cost + temp;
-            GroupSetCost = temp;
+            stock.GroupSetCost = temp;
         }
 
         // Updates the finishing set
-        public void UpdateFinishingSet(string firstCombo, string secondCombo)
+        public void UpdateFinishingSet(string firstCombo, string secondCombo, BikeStock stock)
         {
             double temp = 0;
             
-            if (FinishingSetCost != 0)
+            if (stock.FinishingSetCost != 0)
             {
-                Cost = Cost - FinishingSetCost;
+                Cost = Cost - stock.FinishingSetCost;
                 MessageBox.Show("Deducting cost");
             }
 
-            temp = BikeStock.FinishingSet(firstCombo, secondCombo);
+            temp = stock.FinishingSet(firstCombo, secondCombo);
             Cost += temp;
-            FinishingSetCost = temp;
+            stock.FinishingSetCost = temp;
         }
 
         // Updates the total price for the bike
@@ -122,7 +118,7 @@ namespace BusinessLayer
 
             int count = 0;
 
-            foreach (var order in Orders.bikes)
+            foreach (var order in Orders.Bikes)
             {
             // If Bike Id has already been added to the total orders cost
                 if (order == BikeId)
@@ -139,14 +135,14 @@ namespace BusinessLayer
             if (newBike)
             {
                 Orders.OrderCost += Cost;
-                Orders.bikes.Add(BikeId);
-                Orders.bikeCosts.Add(Cost);
+                Orders.Bikes.Add(BikeId);
+                Orders.BikeCosts.Add(Cost);
             }
             else
             {
-                Orders.OrderCost -= Orders.bikeCosts[count];
+                Orders.OrderCost -= Orders.BikeCosts[count];
                 Orders.OrderCost += Cost;
-                Orders.bikeCosts[count] = Cost;
+                Orders.BikeCosts[count] = Cost;
             }
 
             MessageBox.Show("Cost is " + Cost);
