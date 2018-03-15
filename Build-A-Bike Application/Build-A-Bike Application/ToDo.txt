@@ -13,5 +13,4 @@ From AddBike xaml - call function in bike to return stock left and update cost i
 Total order cost isn't deducted when new bike is added
 
 2nd order and after is always deducted
-
-BIKE STOCK IS STATIC
+	BIKE STOCK IS STATIC

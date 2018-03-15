@@ -14,11 +14,6 @@ namespace DataLayer
         public static int AvailableGroupSet { get; private set; }
         public static int AvailableFinishingSet { get; private set; }
 
-        // Current cost for the selected bike parts
-        public static double FrameCost { get; set; }
-        public static double WheelCost { get; set; }
-        public static double GroupSetCost { get; set; }
-        public static double FinishingSetCost { get; set; }
 
         /// <summary>
         /// Returns cost and stock level of wheels
@@ -38,7 +33,6 @@ namespace DataLayer
                     AvailableWheels = 4;
                     return 90;
                 default:
-                    WheelCost = -1;
                     throw new Exception("Wheel error");
                     
             }
@@ -103,7 +97,6 @@ namespace DataLayer
                         return 140;
                     }
                 default:
-                    FrameCost = -1;
                     throw new Exception("Frame error");
             }
         }
@@ -152,7 +145,6 @@ namespace DataLayer
                         return 160;
                     }
                 default:
-                    GroupSetCost = -1;
                     throw new Exception("Group set error.");
             }
         }
@@ -215,7 +207,6 @@ namespace DataLayer
                         return 120;
                     }
                 default:
-                    FinishingSetCost = -1;
                     throw new Exception("Finishing set error");
             }
         }
