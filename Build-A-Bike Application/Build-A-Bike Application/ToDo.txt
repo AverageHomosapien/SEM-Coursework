@@ -1,7 +1,17 @@
-﻿AddBikeFeatures, why are we adding a new bike?
-	Does it matter?
-
-When switch to a currently active bike, populates all fields with existing information
+﻿When switch to a currently active bike, populates all fields with existing information
 
 Active price updates when changes made
 Active stock updates when changes made
+
+Checking that all information has been entered when submit is pressed
+
+Need to check that both stocks are being requested at the same time
+	(for stocks with fields of two)
+
+From AddBike xaml - call function in bike to return stock left and update cost in class for each
+
+Total order cost isn't deducted when new bike is added
+
+2nd order and after is always deducted
+
+BIKE STOCK IS STATIC

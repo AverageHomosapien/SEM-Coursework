@@ -30,11 +30,10 @@
         <TextBlock x:Name="FrameStock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="NUMBER LEFT IN STOCK" VerticalAlignment="Top" Margin="167,162,0,0"/>
         <Button x:Name="CancelOrder" Content="Cancel Order" HorizontalAlignment="Left" VerticalAlignment="Top" Width="86" Margin="506,15,0,0" Height="24" Click="CancelOrder_Click"/>
         <TextBlock x:Name="WheelStock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="NUMBER LEFT IN STOCK" VerticalAlignment="Top" Margin="167,303,0,0"/>
-        <TextBlock x:Name="GroupStock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="NUMBER LEFT IN STOCK" VerticalAlignment="Top" Margin="459,157,0,0"/>
+        <TextBlock x:Name="GroupStock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="NUMBER LEFT IN STOCK" VerticalAlignment="Top" Margin="459,162,0,0"/>
         <TextBlock x:Name="FinishingStock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="NUMBER LEFT IN STOCK" VerticalAlignment="Top" Margin="459,303,0,0"/>
         <Button x:Name="Submit" Content="Proceed with Order" HorizontalAlignment="Left" VerticalAlignment="Top" Width="122" Margin="373,15,0,0" Height="24"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Individual Cost:" VerticalAlignment="Top" Margin="15,338,0,0"/>
-        <TextBlock x:Name="CostBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="101,338,0,0"/>
+        <TextBlock x:Name="BikeCost" HorizontalAlignment="Left" TextWrapping="Wrap" Text="BIKE COST HERE" VerticalAlignment="Top" Margin="15,338,0,0"/>
         <ComboBox x:Name="FrameSizeCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="177,75,0,0">
             <ComboBoxItem Content="Small"/>
             <ComboBoxItem Content="Medium"/>
@@ -71,8 +70,12 @@
         </ComboBox>
         <Button x:Name="AddBike" Content="Add Bike to Order" HorizontalAlignment="Left" VerticalAlignment="Top" Width="175" Margin="177,15,0,0" Height="24" Click="AddBike_Click"/>
         <CheckBox x:Name="WarrantyBox" Content="Warranty Requested?" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="468,336,0,0"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Order Id:" VerticalAlignment="Top" Margin="167,338,0,0"/>
-        <TextBlock x:Name="OrderIdBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="219,338,0,0"/>
+        <TextBlock x:Name="OrderIdField" HorizontalAlignment="Left" TextWrapping="Wrap" Text="ORDER ID HERE" VerticalAlignment="Top" Margin="167,338,0,0"/>
+        <TextBlock x:Name="FrameCost" HorizontalAlignment="Left" TextWrapping="Wrap" Text="COST OF ITEM" VerticalAlignment="Top" Margin="15,162,0,0"/>
+        <TextBlock x:Name="GroupCost" HorizontalAlignment="Left" TextWrapping="Wrap" Text="COST OF ITEM" VerticalAlignment="Top" Margin="309,162,0,0"/>
+        <TextBlock x:Name="WheelCost" HorizontalAlignment="Left" TextWrapping="Wrap" Text="COST OF ITEM" VerticalAlignment="Top" Margin="15,303,0,0"/>
+        <TextBlock x:Name="FinishingCost" HorizontalAlignment="Left" TextWrapping="Wrap" Text="COST OF ITEM" VerticalAlignment="Top" Margin="309,303,0,0"/>
+        <TextBlock x:Name="OrderCost" HorizontalAlignment="Left" TextWrapping="Wrap" Text="ORDER COST HERE" VerticalAlignment="Top" Margin="302,338,0,0"/>
 
 
     </Grid>
