@@ -27,7 +27,6 @@ namespace Build_A_Bike_Application
 
         private void NewBikeOrder_Click(object sender, RoutedEventArgs e)
         {
-
             try
             {
                 // Checking that a value has been selected
