@@ -24,6 +24,9 @@ namespace Build_A_Bike_Application
         // Declaring a new list of bikes to order
         public List<Bike> bikeList = new List<Bike>();
 
+        // Declaring a new stocklist
+        public List<BikeStock> stockList = new List<BikeStock>();
+
         // List of costs for the bikes
         public List<double> bikeCost = new List<double>();
 
@@ -151,7 +154,7 @@ namespace Build_A_Bike_Application
                 if (bikeList[count].BikeId == bikeToModify)
                 {
                     MessageBox.Show("Updating existing bike");
-                    ModifyBike(bikeToModify, count, bike);
+                    ModifyBike(bike, stockList[count]);
                     bikeFound = true;
                 }
                 count++;
@@ -163,42 +166,41 @@ namespace Build_A_Bike_Application
                 MessageBox.Show("Adding new bike");
                 MessageBox.Show("bike to modify is " + bikeToModify);
                 bikeList.Add(new Bike(Orders.OrderId, bikeToModify));
+                stockList.Add(new BikeStock());
                 Bike bike = bikeList[bikeList.Count -1];
-                ModifyBike(bikeToModify, count, bike);
+                BikeStock stock = stockList[stockList.Count - 1];
+
+                ModifyBike(bike, stock);
             }
         }
 
         /// <summary>
         /// Modifies a bike with an already existing Id
         /// </summary>
-        private void ModifyBike(int bikeNum, int indexAt, Bike bikeToUpdate)
+        private void ModifyBike(Bike bikeToUpdate, BikeStock stockToUpdate)
         {
-
-            MessageBox.Show("bike to update is " + bikeToUpdate);
-            MessageBox.Show("BikeNum is " + bikeNum);
-
             // Update frame size combo
             if (FrameSizeCombo.SelectedIndex != -1 && FrameColourCombo.SelectedIndex != -1)
             {
-                bikeToUpdate.UpdateFrame(FrameSizeCombo.Text, FrameColourCombo.Text);
+                bikeToUpdate.UpdateFrame(FrameSizeCombo.Text, FrameColourCombo.Text, stockToUpdate);
             }
 
             // Update wheels from combo
             if (WheelsCombo.SelectedIndex != -1)
             {
-                bikeToUpdate.UpdateWheels(WheelsCombo.Text);
+                bikeToUpdate.UpdateWheels(WheelsCombo.Text, stockToUpdate);
             }
 
             // Update gears from combo
             if (GearCombo.SelectedIndex != -1 && BrakeCombo.SelectedIndex != -1)
             {
-                bikeToUpdate.UpdateGroupSet(GearCombo.Text, BrakeCombo.Text);
+                bikeToUpdate.UpdateGroupSet(GearCombo.Text, BrakeCombo.Text, stockToUpdate);
             }
 
             // Update handlebars from combo
             if (HandlebarCombo.SelectedIndex != -1 && SaddleCombo.SelectedIndex != -1)
             {
-                bikeToUpdate.UpdateFinishingSet(HandlebarCombo.Text,SaddleCombo.Text);
+                bikeToUpdate.UpdateFinishingSet(HandlebarCombo.Text,SaddleCombo.Text, stockToUpdate);
             }
 
             // If a warranty has been added
@@ -209,15 +211,28 @@ namespace Build_A_Bike_Application
 
             bikeToUpdate.UpdatePrice();
 
+            // Updates the display fields
+            UpdateFields(bikeToUpdate, stockToUpdate);
+            ClearFields();
+        }
+
+        /// <summary>
+        /// Updates the display fields
+        /// </summary>
+        /// <param name="bikeToUpdate">Bike to display</param>
+        /// <param name="stockToUpdate">Stock to display</param>
+        private void UpdateFields(Bike bikeToUpdate, BikeStock stockToUpdate)
+        {
             OrderCost.Text = "Order Cost: £" + Orders.OrderCost;
             BikeCost.Text = "Bike Cost: £" + bikeToUpdate.Cost;
-            FrameCost.Text = "Frame Cost: £" + bikeToUpdate.FrameCost;
-            WheelCost.Text = "Wheel Cost: £" + bikeToUpdate.WheelCost;
-            GroupCost.Text = "Group Set Cost: £" + bikeToUpdate.GroupSetCost;
-            FinishingCost.Text = "Finishing Set Cost: £" + bikeToUpdate.FinishingSetCost;
-
-            
-            ClearFields();
+            FrameCost.Text = "Frame Cost: £" + stockToUpdate.FrameCost;
+            WheelCost.Text = "Wheel Cost: £" + stockToUpdate.WheelCost;
+            GroupCost.Text = "Group Set Cost: £" + stockToUpdate.GroupSetCost;
+            FinishingCost.Text = "Finishing Set Cost: £" + stockToUpdate.FinishingSetCost;
+            FrameStock.Text = "Frames Left: " + stockToUpdate.AvailableFrame;
+            WheelStock.Text = "Wheels Left: " + stockToUpdate.AvailableWheels;
+            GroupStock.Text = "Group Sets Left: " + stockToUpdate.AvailableGroupSet;
+            FinishingStock.Text = "Finishing Sets Left: " + stockToUpdate.AvailableFinishingSet;
         }
         // Adds each of the bikes to the class
         // Upon submitting bikes, submit button calls function in bike class, which checks for each bike's completeness in the list
