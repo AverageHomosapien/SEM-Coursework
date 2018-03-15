@@ -105,6 +105,10 @@
       <Project>{731f49b0-7075-4c06-80b6-d8ac2d63857d}</Project>
       <Name>BusinessLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
+      <Project>{ba84a94f-8c33-40a5-80d3-66c76e6bcac0}</Project>
+      <Name>DataLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ToDo.txt" />

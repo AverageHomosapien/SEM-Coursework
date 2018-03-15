@@ -41,6 +41,7 @@ namespace Build_A_Bike_Application
                 // New bike order with the number of bikes selected from the main menu
                 var bikeOrder = new AddBikeFeatures(tempNum);
                 bikeOrder.Show();
+                MessageBox.Show("The order only updates if a category is complete when a bike is added.");
                 Close();
             }
             catch (Exception newBikeException)
