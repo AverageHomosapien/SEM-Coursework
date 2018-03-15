@@ -209,14 +209,16 @@ namespace Build_A_Bike_Application
 
             bikeToUpdate.UpdatePrice();
 
-            OrderCost.Text = "Order Cost: " + Orders.OrderCost;
-            BikeCost.Text = "Bike Cost: " + bikeToUpdate.Cost;
+            OrderCost.Text = "Order Cost: £" + Orders.OrderCost;
+            BikeCost.Text = "Bike Cost: £" + bikeToUpdate.Cost;
+            FrameCost.Text = "Frame Cost: £" + bikeToUpdate.FrameCost;
+            WheelCost.Text = "Wheel Cost: £" + bikeToUpdate.WheelCost;
+            GroupCost.Text = "Group Set Cost: £" + bikeToUpdate.GroupSetCost;
+            FinishingCost.Text = "Finishing Set Cost: £" + bikeToUpdate.FinishingSetCost;
 
+            
             ClearFields();
         }
-
-        // DONT CHECK THE ENTRIES - STORE THE DATA IN THE BIKE CLASS AND THEN CHECK THE BIKES
-
         // Adds each of the bikes to the class
         // Upon submitting bikes, submit button calls function in bike class, which checks for each bike's completeness in the list
     }

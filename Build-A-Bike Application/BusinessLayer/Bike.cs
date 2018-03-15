@@ -30,6 +30,11 @@ namespace BusinessLayer
         public bool ExtendedWarranty { get; set; }
         public double Cost { get; set; }
 
+        public double FrameCost { get; set; }
+        public double WheelCost { get; set; }
+        public double GroupSetCost { get; set; }
+        public double FinishingSetCost { get; set; }
+
         public int CalculateCost()
         {
             return -1;
@@ -52,14 +57,14 @@ namespace BusinessLayer
         {
             double temp = 0;
 
-            if (BikeStock.FrameCost != 0)
+            if (FrameCost != 0)
             {
-                Cost = Cost - BikeStock.FrameCost;
+                Cost = Cost - FrameCost;
             }
 
             temp = BikeStock.Frame(firstCombo, secondCombo);
             Cost = Cost + temp;
-            BikeStock.FrameCost = temp;
+            FrameCost= temp;
         }
 
         // Updates the wheels
@@ -67,15 +72,15 @@ namespace BusinessLayer
         {
             double temp = 0;
             
-            if (BikeStock.WheelCost != 0)
+            if (WheelCost!= 0)
             {
-                Cost = Cost - BikeStock.WheelCost;
+                Cost = Cost - WheelCost;
                 MessageBox.Show("Deducting cost");
             }
 
             temp = BikeStock.Wheels(comboBox);
             Cost = Cost + temp;
-            BikeStock.WheelCost = temp;
+            WheelCost = temp;
         }
 
         // Updates the group set
@@ -83,15 +88,15 @@ namespace BusinessLayer
         {
             double temp = 0;
             
-            if (BikeStock.GroupSetCost != 0)
+            if (GroupSetCost != 0)
             {
-                Cost = Cost - BikeStock.GroupSetCost;
+                Cost = Cost - GroupSetCost;
                 MessageBox.Show("Deducting cost");
             }
 
             temp = BikeStock.GroupSet(firstCombo, secondCombo);
             Cost = Cost + temp;
-            BikeStock.GroupSetCost = temp;
+            GroupSetCost = temp;
         }
 
         // Updates the finishing set
@@ -99,15 +104,15 @@ namespace BusinessLayer
         {
             double temp = 0;
             
-            if (BikeStock.FinishingSetCost != 0)
+            if (FinishingSetCost != 0)
             {
-                Cost = Cost - BikeStock.FinishingSetCost;
+                Cost = Cost - FinishingSetCost;
                 MessageBox.Show("Deducting cost");
             }
 
             temp = BikeStock.FinishingSet(firstCombo, secondCombo);
             Cost += temp;
-            BikeStock.FinishingSetCost = temp;
+            FinishingSetCost = temp;
         }
 
         // Updates the total price for the bike
