@@ -12,7 +12,7 @@ namespace DataLayer
     public static class Orders
     {
         // Need to add an incrementing feature after the order has been fully completed and paid for
-        public static int OrderId = 905;
+        public static int OrderId = 0;
 
         public static double OrderCost = 0;
 

@@ -41,7 +41,7 @@ namespace Build_A_Bike_Application
         /// Adds 
         /// </summary>
         /// <param name="bikeNumber"></param>
-        public AddBikeFeatures(int bikeNumber)
+        public AddBikeFeatures(int bikeNumber, Order order)
         {
             InitializeComponent();
 
@@ -56,7 +56,7 @@ namespace Build_A_Bike_Application
 
             BikeNumber = count;
 
-            OrderIdField.Text = "Order Id: " + Orders.OrderId;
+            OrderIdField.Text = "Order Id: " + Order.OrderId;
 
             ClearText();
             ClearFields();
@@ -79,43 +79,48 @@ namespace Build_A_Bike_Application
         /// </summary>
         /// <param name="bikeNum">checking the bike number attributes</param>
         /// <returns></returns>
-        private void CheckEntriesComplete(int bikeNum)
+        private void CheckEntriesComplete(Bike bikeToCheck)
         {
-            ////// TO BE LOOPED THROUGH BY THE SUBMIT CHECKER
-            ////// NEW FUNCTION THAT ADVISES THE USER THERE ARE UNSAVED CHANGES TO THE BIKE CLASS
-            if (FrameSizeCombo.SelectedIndex != -1)
+            if (bikeToCheck.Size == null)
             {
-                MessageBox.Show("Please ensure that you enter the frame size for the bike before you continue.");
+                throw new Exception
+                    ("Please ensure that you enter the frame size for the bike before you continue.");
             }
 
-            if (FrameColourCombo.SelectedIndex != -1)
+            if (bikeToCheck.Colour == null)
             {
-                MessageBox.Show("Please ensure that you enter the frame colour for the bike before you continue.");
+                throw new Exception
+                    ("Please ensure that you enter the frame colour for the bike before you continue.");
             }
 
-            if (WheelsCombo.SelectedIndex != -1)
+            if (bikeToCheck.Wheels == null)
             {
-                MessageBox.Show("Please ensure that you enter the wheel type for the bike before you continue.");
+                throw new Exception
+                    ("Please ensure that you enter the wheel type for the bike before you continue.");
             }
 
-            if (GearCombo.SelectedIndex != -1)
+            if (bikeToCheck.Gears == null)
             {
-                MessageBox.Show("Please ensure that you enter the gear type for the bike before you continue.");
+                throw new Exception
+                    ("Please ensure that you enter the gear type for the bike before you continue.");
             }
 
-            if (BrakeCombo.SelectedIndex != -1)
+            if (bikeToCheck.Brakes == null)
             {
-                MessageBox.Show("Please ensure that you enter the gear type for the bike before you continue.");
+                throw new Exception
+                    ("Please ensure that you enter the brakes type for the bike before you continue.");
             }
 
-            if (HandlebarCombo.SelectedIndex != -1)
+            if (bikeToCheck.Handlebars == null)
             {
-                MessageBox.Show("Please ensure that you enter the handlebar type for the bike before you continue.");
+                throw new Exception
+                    ("Please ensure that you enter the handlebar type for the bike before you continue.");
             }
 
-            if (SaddleCombo.SelectedIndex != -1)
+            if (bikeToCheck.Saddle == null)
             {
-                MessageBox.Show("There is still unsaved information for the current bike. It will be unsaved if you select a new bike.");
+                throw new Exception
+                    ("There is still unsaved information for the current bike. It will be unsaved if you select a new bike.");
             }
         }
 
@@ -146,7 +151,7 @@ namespace Build_A_Bike_Application
             // Adding new bike
             if (!bikeFound)
             {
-                bikeList.Add(new Bike(Orders.OrderId, bikeToModify));
+                bikeList.Add(new Bike(Order.OrderId, bikeToModify));
                 stockList.Add(new BikeStock());
                 Bike bike = bikeList[bikeList.Count -1];
                 BikeStock stock = stockList[stockList.Count - 1];
@@ -211,7 +216,7 @@ namespace Build_A_Bike_Application
         private void UpdateText(Bike bikeToUpdate, BikeStock stockToUpdate)
         {
             OrderCost.Text = "Order Cost: £" + Orders.OrderCost;
-            OrderIdField.Text = "Order Id: " + Orders.OrderId;
+            OrderIdField.Text = "Order Id: " + Order.OrderId;
             BikeCost.Text = "Bike Cost: £" + bikeToUpdate.Cost;
             FrameCost.Text = "Frame Cost: £" + stockToUpdate.FrameCost;
             WheelCost.Text = "Wheel Cost: £" + stockToUpdate.WheelCost;
@@ -299,6 +304,28 @@ namespace Build_A_Bike_Application
             {
                 ClearFields();
             }
+        }
+
+        /// <summary>
+        /// Button that proceeds with order
+        /// </summary>
+        private void Submit_Click(object sender, RoutedEventArgs e)
+        {
+            if (BikeNumber != bikeList.Count)
+            {
+                throw new Exception
+                    ("Please ensure that you fill out details for all the bikes.");
+            }
+
+            // Checks that each bike has the minimum number of details for the order
+            foreach (var bike in bikeList)
+            {
+                CheckEntriesComplete(bike);
+            }
+
+            Receipt receipt = new Receipt(bikeList);
+            receipt.Show();
+            Close();
         }
     }
 }

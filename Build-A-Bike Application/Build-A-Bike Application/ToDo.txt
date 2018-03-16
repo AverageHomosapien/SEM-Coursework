@@ -1,9 +1,2 @@
-﻿When switch to a currently active bike, populates all fields with existing information
-
-Active price updates when changes made
-Active stock updates when changes made
-
-Checking that all information has been entered when submit is pressed
-
-// Adds each of the bikes to the class
-// Upon submitting bikes, submit button calls function in bike class, which checks for each bike's completeness in the list
+﻿Checking that all information has been entered when submit is pressed
+Adding Staff Id for order purchase - links to order
