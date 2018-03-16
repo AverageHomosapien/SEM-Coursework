@@ -19,8 +19,7 @@ namespace BusinessLayer
 
         public int BikeId { get; private set; }
         public int OrderId { get; private set; }
-        public string BikeSize { get; set; }
-        public string Frame { get; set; }
+        public string Size { get; set; }
         public string Colour { get; set; }
         public string Wheels { get; set; }
         public string Gears { get; set; }
@@ -45,7 +44,6 @@ namespace BusinessLayer
         {
             ExtendedWarranty = true;
             Cost = Cost + 100;
-            MessageBox.Show("Added warranty");
         }
 
         // Updates the frame
@@ -71,7 +69,6 @@ namespace BusinessLayer
             if (stock.WheelCost!= 0)
             {
                 Cost = Cost - stock.WheelCost;
-                MessageBox.Show("Deducting cost");
             }
 
             temp = stock.Wheels(comboBox);
@@ -87,7 +84,6 @@ namespace BusinessLayer
             if (stock.GroupSetCost != 0)
             {
                 Cost = Cost - stock.GroupSetCost;
-                MessageBox.Show("Deducting cost");
             }
 
             temp = stock.GroupSet(firstCombo, secondCombo);
@@ -103,7 +99,6 @@ namespace BusinessLayer
             if (stock.FinishingSetCost != 0)
             {
                 Cost = Cost - stock.FinishingSetCost;
-                MessageBox.Show("Deducting cost");
             }
 
             temp = stock.FinishingSet(firstCombo, secondCombo);
@@ -144,8 +139,6 @@ namespace BusinessLayer
                 Orders.OrderCost += Cost;
                 Orders.BikeCosts[count] = Cost;
             }
-
-            MessageBox.Show("Cost is " + Cost);
         }
 
         public void CancelOrder()
