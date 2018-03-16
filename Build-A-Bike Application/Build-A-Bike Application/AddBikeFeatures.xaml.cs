@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,8 +57,9 @@ namespace Build_A_Bike_Application
             BikeNumber = count;
 
             OrderIdField.Text = "Order Id: " + Orders.OrderId;
-            OrderCost.Text = "Order Cost: ";
-            BikeCost.Text = "Bike Cost: ";
+
+            ClearText();
+            ClearFields();
         }
 
         /// <summary>
@@ -79,7 +81,7 @@ namespace Build_A_Bike_Application
         /// <returns></returns>
         private void CheckEntriesComplete(int bikeNum)
         {
-
+            ////// TO BE LOOPED THROUGH BY THE SUBMIT CHECKER
             ////// NEW FUNCTION THAT ADVISES THE USER THERE ARE UNSAVED CHANGES TO THE BIKE CLASS
             if (FrameSizeCombo.SelectedIndex != -1)
             {
@@ -117,24 +119,6 @@ namespace Build_A_Bike_Application
             }
         }
 
-        // Clears each of the fields
-        private void ClearFields()
-        {
-            FrameSizeCombo.SelectedIndex = -1;
-            FrameColourCombo.SelectedIndex = -1;
-            WheelsCombo.SelectedIndex = -1;
-            GearCombo.SelectedIndex = -1;
-            BrakeCombo.SelectedIndex = -1;
-            HandlebarCombo.SelectedIndex = -1;
-            SaddleCombo.SelectedIndex = -1;
-            WarrantyBox.IsChecked = false;
-        }
-
-        // Called right at the beginning of the program
-        private void BikeNumCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
 
         /// <summary>
         /// Button to add or update a bike based on details in the forms
@@ -153,7 +137,6 @@ namespace Build_A_Bike_Application
                 // Updating existing bike
                 if (bikeList[count].BikeId == bikeToModify)
                 {
-                    MessageBox.Show("Updating existing bike");
                     ModifyBike(bike, stockList[count]);
                     bikeFound = true;
                 }
@@ -163,8 +146,6 @@ namespace Build_A_Bike_Application
             // Adding new bike
             if (!bikeFound)
             {
-                MessageBox.Show("Adding new bike");
-                MessageBox.Show("bike to modify is " + bikeToModify);
                 bikeList.Add(new Bike(Orders.OrderId, bikeToModify));
                 stockList.Add(new BikeStock());
                 Bike bike = bikeList[bikeList.Count -1];
@@ -175,31 +156,38 @@ namespace Build_A_Bike_Application
         }
 
         /// <summary>
-        /// Modifies a bike with an already existing Id
+        /// Modifies a bike with an existing Id
         /// </summary>
         private void ModifyBike(Bike bikeToUpdate, BikeStock stockToUpdate)
         {
             // Update frame size combo
             if (FrameSizeCombo.SelectedIndex != -1 && FrameColourCombo.SelectedIndex != -1)
             {
+                bikeToUpdate.Size = FrameSizeCombo.Text;
+                bikeToUpdate.Colour = FrameColourCombo.Text;
                 bikeToUpdate.UpdateFrame(FrameSizeCombo.Text, FrameColourCombo.Text, stockToUpdate);
             }
 
             // Update wheels from combo
             if (WheelsCombo.SelectedIndex != -1)
             {
+                bikeToUpdate.Wheels = WheelsCombo.Text;
                 bikeToUpdate.UpdateWheels(WheelsCombo.Text, stockToUpdate);
             }
 
             // Update gears from combo
             if (GearCombo.SelectedIndex != -1 && BrakeCombo.SelectedIndex != -1)
             {
+                bikeToUpdate.Gears = GearCombo.Text;
+                bikeToUpdate.Brakes = BrakeCombo.Text;
                 bikeToUpdate.UpdateGroupSet(GearCombo.Text, BrakeCombo.Text, stockToUpdate);
             }
 
             // Update handlebars from combo
             if (HandlebarCombo.SelectedIndex != -1 && SaddleCombo.SelectedIndex != -1)
             {
+                bikeToUpdate.Handlebars = HandlebarCombo.Text;
+                bikeToUpdate.Saddle = SaddleCombo.Text;
                 bikeToUpdate.UpdateFinishingSet(HandlebarCombo.Text,SaddleCombo.Text, stockToUpdate);
             }
 
@@ -212,8 +200,7 @@ namespace Build_A_Bike_Application
             bikeToUpdate.UpdatePrice();
 
             // Updates the display fields
-            UpdateFields(bikeToUpdate, stockToUpdate);
-            ClearFields();
+            UpdateText(bikeToUpdate, stockToUpdate);
         }
 
         /// <summary>
@@ -221,9 +208,10 @@ namespace Build_A_Bike_Application
         /// </summary>
         /// <param name="bikeToUpdate">Bike to display</param>
         /// <param name="stockToUpdate">Stock to display</param>
-        private void UpdateFields(Bike bikeToUpdate, BikeStock stockToUpdate)
+        private void UpdateText(Bike bikeToUpdate, BikeStock stockToUpdate)
         {
             OrderCost.Text = "Order Cost: £" + Orders.OrderCost;
+            OrderIdField.Text = "Order Id: " + Orders.OrderId;
             BikeCost.Text = "Bike Cost: £" + bikeToUpdate.Cost;
             FrameCost.Text = "Frame Cost: £" + stockToUpdate.FrameCost;
             WheelCost.Text = "Wheel Cost: £" + stockToUpdate.WheelCost;
@@ -234,7 +222,83 @@ namespace Build_A_Bike_Application
             GroupStock.Text = "Group Sets Left: " + stockToUpdate.AvailableGroupSet;
             FinishingStock.Text = "Finishing Sets Left: " + stockToUpdate.AvailableFinishingSet;
         }
-        // Adds each of the bikes to the class
-        // Upon submitting bikes, submit button calls function in bike class, which checks for each bike's completeness in the list
+
+
+        // Clears each of the fields
+        private void ClearFields()
+        {
+            FrameSizeCombo.SelectedIndex = -1;
+            FrameColourCombo.SelectedIndex = -1;
+            WheelsCombo.SelectedIndex = -1;
+            GearCombo.SelectedIndex = -1;
+            BrakeCombo.SelectedIndex = -1;
+            HandlebarCombo.SelectedIndex = -1;
+            SaddleCombo.SelectedIndex = -1;
+            WarrantyBox.IsChecked = false;
+        }
+
+        // Clears the text fields
+        private void ClearText()
+        {
+            OrderCost.Text = "Order Cost: £" + Orders.OrderCost;
+            BikeCost.Text = "Bike Cost:";
+            FrameCost.Text = "Frame Cost:";
+            WheelCost.Text = "Wheel Cost:";
+            GroupCost.Text = "Group Set Cost:";
+            FinishingCost.Text = "Finishing Set Cost:";
+            FrameStock.Text = "Frames Left:";
+            WheelStock.Text = "Wheels Left:";
+            GroupStock.Text = "Group Sets Left:";
+            FinishingStock.Text = "Finishing Sets Left:";
+        }
+
+        // Populates the fields of the form when switched to
+        private void PopulateFields(Bike bikeToUpdate)
+        {
+            FrameSizeCombo.Text = bikeToUpdate.Size;
+            FrameColourCombo.Text = bikeToUpdate.Colour;
+            WheelsCombo.Text = bikeToUpdate.Wheels;
+            GearCombo.Text = bikeToUpdate.Gears;
+            BrakeCombo.Text = bikeToUpdate.Brakes;
+            HandlebarCombo.Text = bikeToUpdate.Handlebars;
+            SaddleCombo.Text = bikeToUpdate.Saddle;
+
+            if (bikeToUpdate.ExtendedWarranty)
+            {
+                WarrantyBox.IsChecked = true;
+            }
+        }
+
+        /// <summary>
+        /// Updates when combobox changed
+        /// </summary>
+        private void BikeNumCombo_OnDropDownClosed(object sender, EventArgs e)
+        {
+            ClearFields();
+            ClearText();
+
+            int newNum = Int32.Parse(BikeNumCombo.Text);
+            int count = 0;
+            bool changedFields = false;
+            foreach (var bike in bikeList)
+            {
+                // If the bike is pre-existing
+                if (bike.BikeId == newNum)
+                {
+                    UpdateText(bikeList[count], stockList[count]);
+                    PopulateFields(bikeList[count]);
+                    changedFields = true;
+                    break;
+                }
+
+                count++;
+            }
+
+            // If the fields haven't changed
+            if (!changedFields)
+            {
+                ClearFields();
+            }
+        }
     }
 }
