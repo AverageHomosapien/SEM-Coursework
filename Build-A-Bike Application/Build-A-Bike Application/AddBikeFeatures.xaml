@@ -32,7 +32,7 @@
         <TextBlock x:Name="WheelStock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="NUMBER LEFT IN STOCK" VerticalAlignment="Top" Margin="167,303,0,0"/>
         <TextBlock x:Name="GroupStock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="NUMBER LEFT IN STOCK" VerticalAlignment="Top" Margin="459,162,0,0"/>
         <TextBlock x:Name="FinishingStock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="NUMBER LEFT IN STOCK" VerticalAlignment="Top" Margin="459,303,0,0"/>
-        <Button x:Name="Submit" Content="Proceed with Order" HorizontalAlignment="Left" VerticalAlignment="Top" Width="122" Margin="373,15,0,0" Height="24"/>
+        <Button x:Name="Submit" Content="Proceed with Order" HorizontalAlignment="Left" VerticalAlignment="Top" Width="122" Margin="373,15,0,0" Height="24" Click="Submit_Click"/>
         <TextBlock x:Name="BikeCost" HorizontalAlignment="Left" TextWrapping="Wrap" Text="BIKE COST HERE" VerticalAlignment="Top" Margin="15,338,0,0"/>
         <ComboBox x:Name="FrameSizeCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="177,75,0,0">
             <ComboBoxItem Content="Small"/>
