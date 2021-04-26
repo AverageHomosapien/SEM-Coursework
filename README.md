@@ -1,10 +1,5 @@
-# hamilton_calum_set008101_coursework1
+# Software Engineering Methods Coursework
 
-## Summary
-This is the second part of the Software Engineering Methods coursework where we need to implement the application.
+Second year coursework.
 
-## Author:
-Calum Hamilton
-
-## Date Due:
-09/04/2018
+I implemented a bike-ordering system allowing customisation of the bike and purchase order. It developed an application from UML and activity diagrams.
